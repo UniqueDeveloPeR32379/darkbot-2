@@ -51,4 +51,11 @@ def get_xp(user_id: int):
     else:
         return 0
 
+    if message.content.lower().startswith('d!coin'): #Coinflip 50/50% chance 
+        choice = random.randint(1,2)
+        if choice == 1:
+            await client.add_reaction(message, '🌑')
+        if choice == 2:
+            await client.add_reaction(message, '🌕')
+ 
 client.run(os.getenv('Token'))
