@@ -53,6 +53,7 @@ def get_xp(user_id: int):
     else:
         return 0
      
+async def on_message(message):
 
     if message.content.lower().startswith('d!coin'): #Coinflip 50/50% chance 
         choice = random.randint(1,2)
