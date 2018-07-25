@@ -15,10 +15,7 @@ async def on_ready():
 @client.event
 async def on_message(message):
 
-    if message.content.lower().startswith('.test'):
-        await client.send_message(message.channel, "Test")
-
-    if message.content.lower().startswith('.xp'):
+    if message.content.lower().startswith('ḍ!xp'):
         await client.send_message(message.channel, "You have `{}` XP!".format(get_xp(message.author.id)))
 
     user_add_xp(message.author.id, 2)
