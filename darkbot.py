@@ -43,7 +43,8 @@ async def on_message(message):
 
     if message.content.lower().startswith('d!xp'):
         await client.send_message(message.channel, "**You have** `{}` **XP!**".format(get_xp(message.author.id)))
-
+    user_add_xp(message.author.id, 1)
+    
     if message.content.lower().startswith('d!lvl'):
         level = get_level(user_id)
         await client.send_message(message.channel, "**Your Level is:** {}".format(level))
