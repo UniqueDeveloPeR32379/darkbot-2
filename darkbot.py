@@ -5,7 +5,7 @@ import asyncio
 import random
 
 client = discord.Client()
-
+gamble_msg_stuff = {}
  
 
 @client.event
