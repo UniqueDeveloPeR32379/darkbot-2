@@ -42,8 +42,9 @@ async def on_message(message):
         await client.add_roles(message.author, lvl_role)
 
     if message.content.lower().startswith('d!xp'):
-        await client.send_message(message.channel, "**You have** `{}` **XP!**".format(get_xp(message.author.id)))
+        await client.send_message(message.channel, "You have `{}` XP!".format(get_xp(message.author.id)))
     user_add_xp(message.author.id, 1)
+
     
     if message.content.lower().startswith('d!lvl'):
         level = get_level(user_id)
