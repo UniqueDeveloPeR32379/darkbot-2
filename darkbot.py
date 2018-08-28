@@ -6,7 +6,9 @@ client = discord.Client()
 
 @client.event
 async def on_ready():
-    print('bot online')
+    print(client.user.name)
+    print("===================")
+
   
 @client.event
 async def on_message(message):
