@@ -22,15 +22,6 @@ async def on_member_join(member):
   
 @client.event
 async def on_message(message):
-    if message.content.lower().startswith('d!xp'):
-        await client.send_message(message.channel, "You have `{}` XP!".format(experience(message.author.id)))
-
-    if message.content.lower().startswith('d!level'):
-        level = level(user_id)
-        await client.send_message(message.channel, "You are at Level: {}".format(level(message.author.id)))
-        
-@client.event
-async def on_message(message):
     with open('users.json', 'r') as f:
         users = json.load(f)
         
@@ -59,5 +50,5 @@ async def level_up(users, user, channel):
     if lvl_start < lvl_end:
         await client.send_message(channel, '{} has leveled up to level {}'.format(user.mention, lvl_end))
         users[user.id]['level'] = lvl_end  
-        
+   
 client.run(os.getenv('Token'))
