@@ -3,7 +3,10 @@ import json
 import os.path
 
 client = discord.Client()
-
+user_id = message.author.id
+author_level = get_level(user_id)
+author_xp = get_xp(user_id)
+    
 @client.event
 async def on_ready():
     print(client.user.name)
@@ -12,11 +15,6 @@ async def on_ready():
   
 @client.event
 async def on_message(message):
-    user_id = message.author.id
-
-    author_level = get_level(user_id)
-    author_xp = get_xp(user_id)
-
     if author_level == 0 and author_xp >= 100:
         set_level(user_id, 1)
         await client.send_message(message.channel, "Congratulations! You have reached Level 1")
