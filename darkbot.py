@@ -94,7 +94,7 @@ def get_xp(user_id: int):
             users = json.load(fp)
         return users[user_id]['xp']
     else:
-        return 0
+        return
 
 
 def set_level(user_id: int, level: int):
@@ -113,7 +113,7 @@ def get_level(user_id: int):
                 users = json.load(fp)
             return users[user_id]['level']
         except KeyError:
-            return 0
+            return
 
    
 client.run(os.getenv('Token'))
