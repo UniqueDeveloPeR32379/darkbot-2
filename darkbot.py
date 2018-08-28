@@ -51,4 +51,11 @@ async def level_up(users, user, channel):
         await client.send_message(channel, '{} has leveled up to level {}'.format(user.mention, lvl_end))
         users[user.id]['level'] = lvl_end  
    
+    if message.content.lower().startswith('d!xp'):
+        await client.send_message(message.channel, "You have `{}` XP!".format(experience(message.author.id)))
+
+    if message.content.lower().startswith('d!level'):
+        level = level(user_id)
+        await client.send_message(message.channel, "You are at Level: {}".format(level(message.author.id)))
+        
 client.run(os.getenv('Token'))
