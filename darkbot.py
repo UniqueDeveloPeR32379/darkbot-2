@@ -28,12 +28,21 @@ async def on_message(message):
     if author_level == 2 and author_xp >= 250:
         set_level(user_id, 3)
         await client.send_message(message.channel, "Congratulations! You have reached Level 3")
-    if author_level == 3 and author_xp >= 300:
+    if author_level == 3 and author_xp >= 350:
         set_level(user_id, 4)
         await client.send_message(message.channel, "Congratulations! You have reached Level 4")
-    if author_level == 4 and author_xp >= 400:
+    if author_level == 4 and author_xp >= 450:
         set_level(user_id, 5)
         await client.send_message(message.channel, "Congratulations! You have reached Level 5")
+    if author_level == 5 and author_xp >= 550:
+        set_level(user_id, 6)
+        await client.send_message(message.channel, "Congratulations! You have reached Level 6")
+    if author_level == 6 and author_xp >= 600:
+        set_level(user_id, 7)
+        await client.send_message(message.channel, "Congratulations! You have reached Level 7")
+    if author_level == 7 and author_xp >= 650:
+        set_level(user_id, 8)
+        await client.send_message(message.channel, "Congratulations! You have reached Level 8")
     if author_level == 8 and author_xp >= 700:
         set_level(user_id, 9)
         await client.send_message(message.channel, "Congratulations! You have reached Level 9")
