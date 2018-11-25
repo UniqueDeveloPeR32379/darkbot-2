@@ -218,16 +218,7 @@ async def me(ctxt):
             ans += Matrix[n][0]+"\n"
     await bot.say(ans)
 
-@bot.command(pass_context=True)
-async def info(ctxt, user:discord.Member):
-    """Tells you about the pinged player in the economy"""
-    who = ('{}'.format(user))
-    await bot.say(who+" has $"+str(getMoney(who))+" and is worth $"+str(getValue(who)))
-    ans = "__**Waifus:**__\n"
-    for n in range(0,h):
-        if Matrix[n][3] == who:
-            ans += Matrix[n][0]+"\n"
-            
+          
 @bot.command(pass_context=True)
 async def give(ctxt, amt, user:discord.Member):
     """Used to trade money between players."""
