@@ -2,6 +2,7 @@ import discord
 import random
 import operator
 from discord.ext import commands
+import os
 
 client = discord.Client()
 bot = commands.Bot(command_prefix='mv!', description='A real, sustainable economy for your server', pm_help = False)
