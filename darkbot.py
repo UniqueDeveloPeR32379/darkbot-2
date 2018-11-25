@@ -4,7 +4,7 @@ import operator
 from discord.ext import commands
 
 client = discord.Client()
-bot = commands.Bot(command_prefix='=', description='A real, sustainable economy for your server')
+bot = commands.Bot(command_prefix='mv!', description='A real, sustainable economy for your server', pm_help = False)
 isbet = False
 
 file = open("testfile.txt","a")  
