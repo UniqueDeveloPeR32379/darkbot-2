@@ -6,6 +6,7 @@ import os
 
 client = discord.Client()
 bot = commands.Bot(command_prefix='mv!', description='A real, sustainable economy for your server', pm_help = False)
+bot.remove_command('help')
 isbet = False
 
 file = open("testfile.txt","a")  
@@ -27,12 +28,7 @@ async def on_ready():
 w, h = 4, 14
 Matrix = [[0 for x in range(w)] for y in range(h)]
 
-#Basic Commands
-@bot.command()
-async def hello():
-    """Basic command to check that the bot is on and responding."""
-    await bot.say("Hello, World!")
-        
+      
 @bot.command(pass_context=True)
 async def whoami(ctxt):
     """Tells you what your username is; this is how you are saved in the file."""
