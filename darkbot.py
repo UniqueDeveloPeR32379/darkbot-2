@@ -35,11 +35,6 @@ async def whoami(ctxt):
     await bot.say('You are {0.message.author}'.format(ctxt))
     
 @bot.command()
-async def joined(member : discord.Member):
-    """Tells you when a mentioned member joined"""
-    await bot.say('{0.name} joined in {0.joined_at}'.format(member))
-    
-@bot.command()
 async def real(user:discord.Member):
     """Tells you what the real username of a mentioned user is. This is how they are saved in the file"""
     await bot.say("Their real name is {}.".format(user))
