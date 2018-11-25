@@ -124,7 +124,7 @@ def saveBot():
 def checkOwner(who):
     #if manage_server(who) == True:
         #return True
-    if str(who) == "VolatileMatter#5451":
+    if str(who) == "DarkLegend#3807":
         return True
     else:
         return False
