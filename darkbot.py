@@ -37,6 +37,7 @@ async def setreactionverify(ctx):
             react_message = await client.send_message(channel, 'React with 🇻 to Verify')
             reaction = '🇻'
             await client.add_reaction(react_message, reaction)
-  
+            reaction1 = await client.wait_for_reaction(emoji="🇻", message=react_messagw)
+            await client.add_roles(reaction1.message.author, role)  
     
 client.run(os.getenv('Token'))
