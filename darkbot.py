@@ -30,4 +30,4 @@ async def setreactionverify(ctx):
             reaction1 = await client.wait_for_reaction(emoji="🇻", message=react_messagw)
             await client.add_roles(reaction1.message.author, role)    
     
-bot.run(os.environ['Token'])
+client.run(os.getenv('Token'))
