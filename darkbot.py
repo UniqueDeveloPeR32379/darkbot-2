@@ -16,13 +16,11 @@ async def on_ready():
             
 @client.event
 async def on_reaction_add(reaction, user):
-    verifychannel = "★verify-for-chatting★"
     for channel in user.server.channels:
-      if channel.name != verifychannel:
-          return
-      if str(reaction.emoji) == "🇻":
+      if channel.name == '★verify-for-chatting★':
           role = discord.utils.get(user.server.roles, name="Verified")
           await client.add_roles(user, role)
+      else: return
         
 @client.command(pass_context = True)
 @commands.has_permissions(administrator=True)
