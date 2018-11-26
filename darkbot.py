@@ -16,14 +16,13 @@ async def on_ready():
             
 @client.event
 async def on_reaction_add(reaction, user):
+    verifychannel = "★verify-for-chatting★"
     for channel in user.server.channels:
-      if channel.name == '★verify-for-chatting★':
-          await client.delete_messages(5)
-          message = await client.send_message(channel, 'React with 🇻 to Verify')
-          await client.wait_for_reaction(emoji="🇻", message=message)
+      if channel.name != verifychannel:
+          return
+      if str(reaction.emoji) == "🇻":
           role = discord.utils.get(user.server.roles, name="Verified")
           await client.add_roles(user, role)
-      else: return
         
 @client.command(pass_context = True)
 @commands.has_permissions(administrator=True)
@@ -38,7 +37,6 @@ async def setreactionverify(ctx):
             react_message = await client.send_message(channel, 'React with 🇻 to Verify')
             reaction = '🇻'
             await client.add_reaction(react_message, reaction)
-            reaction1 = await client.wait_for_reaction(emoji="🇻", message=react_messagw)
-            await client.add_roles(reaction.message.author, role)  
+  
     
 client.run(os.getenv('Token'))
