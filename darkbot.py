@@ -44,7 +44,7 @@ async def setreactionverify(ctx):
     await client.create_channel(server, '★verify-for-chatting★',everyone)
     for channel in author.server.channels:
         if channel.name == '★verify-for-chatting★':
-            react_message = await client.send_message(channel, 'React with 🇻 to Verify')
+            react_message = await client.send_message(channel, 'React with 🇻 to Verify | Sometimes it not works so you can also use mv!verify anywhere(Where you can send messages)')
             reaction = '🇻'
             await client.add_reaction(react_message, reaction)
   
