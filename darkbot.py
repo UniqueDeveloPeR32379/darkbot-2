@@ -16,7 +16,7 @@ async def on_ready():
             
 @client.event
 async def on_reaction_add(reaction, user):
-    channel.name == '★verify-for-chatting★':
+    channel.name = "★verify-for-chatting★"
     if reaction.message.channel.name != channel.name:
         return
     if str(reaction.emoji) == "🇻":
