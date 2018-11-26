@@ -24,6 +24,16 @@ async def on_reaction_add(reaction, user):
           role = discord.utils.get(user.server.roles, name="Verified")
           await client.add_roles(user, role)
         
+@client.event
+async def on_reaction_remove(reaction, user):
+    verifychannel = "★verify-for-chatting★"
+    for channel in user.server.channels:
+      if channel.name != verifychannel:
+          return
+      if str(reaction.emoji) == "🇻":
+          role = discord.utils.get(user.server.roles, name="Verified")
+          await client.remove_roles(user, role)
+        
 @client.command(pass_context = True)
 @commands.has_permissions(administrator=True)
 async def setreactionverify(ctx):
