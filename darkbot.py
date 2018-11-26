@@ -7,7 +7,10 @@ import asyncio
 client = commands.Bot(description="MultiVerse Official Bot", command_prefix="mv!", pm_help = True)
 client.remove_command('help')
 
-
+@client.event
+async def on_message(message):
+	await client.process_commands(message)
+    
 #show when it connects to discord
 @client.event
 async def on_ready():
