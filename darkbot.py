@@ -11,12 +11,12 @@ client.remove_command('help')
 #show when it connects to discord
 @client.event
 async def on_ready():
-    for channel in author.server.channels:
+    for channel in user.server.channels:
         if channel.name == '★verify-for-chatting★':
             role = discord.utils.get(user.server.roles, name="Verified")
         while True:
             reaction = await client.wait_for_reaction(emoji="🇻", message=message)
-            await client.add_roles(reaction.message.author, role)
+            await client.add_roles(user, role)
             print('Logged in as')
             print(client.user.name)
         
