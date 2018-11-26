@@ -16,6 +16,7 @@ async def on_ready():
       
 @client.event
 async def on_message(message):
+     user = message.author
      await client.wait_for_reaction(emoji="🇻", message=message)
      role = discord.utils.get(user.server.roles, name="Verified")
      await client.add_roles(user, role)
