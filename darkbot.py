@@ -13,13 +13,6 @@ client.remove_command('help')
 async def on_ready():
     print('Logged in as')
     print(client.user.name)
-      
-@client.event
-async def on_message(message):
-     user = message.author
-     await client.wait_for_reaction(emoji="🇻", message=message)
-     role = discord.utils.get(user.server.roles, name="Verified")
-     await client.add_roles(user, role)
        
 @client.event
 async def on_reaction_add(reaction, user):
