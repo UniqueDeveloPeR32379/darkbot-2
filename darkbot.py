@@ -18,6 +18,9 @@ async def on_ready():
 async def on_reaction_add(reaction, user):
     for channel in user.server.channels:
       if channel.name == '★verify-for-chatting★':
+          await client.delete_messages(5)
+          message = await client.send_message(channel, 'React with 🇻 to Verify')
+          await client.wait_for_reaction(emoji="🇻", message=message)
           role = discord.utils.get(user.server.roles, name="Verified")
           await client.add_roles(user, role)
       else: return
