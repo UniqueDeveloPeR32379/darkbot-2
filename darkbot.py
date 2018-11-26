@@ -11,8 +11,8 @@ client.remove_command('help')
 #show when it connects to discord
 @client.event
 async def on_ready():
-print('Logged in as')
-print(client.user.name)
+    print('Logged in as')
+    print(client.user.name)
             
 @client.event
 async def on_reaction_add(reaction, user):
