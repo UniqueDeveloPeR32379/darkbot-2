@@ -51,5 +51,5 @@ async def setreactionverify(ctx):
             reaction = '🇻'
             await client.add_reaction(react_message, reaction)
   
-    
+
 client.run(os.getenv('Token'))
