@@ -16,17 +16,17 @@ async def on_message(message):
 async def on_ready():
     print('Logged in as')
     print(client.user.name)
-       
+
 @client.event
 async def on_reaction_add(reaction, user):
-    verifychannel = "★verify-for-chatting★"
-    for channel in user.server.channels:
-      if channel.name != verifychannel:
-          return
-      if str(reaction.emoji) == "🇻":
-          role = discord.utils.get(user.server.roles, name="Verified")
-          await client.add_roles(user, role)
-        
+    roleChannelId = discord.utils.get(reaction.message.server.channels, name="★verify-for-chatting★", type="ChannelType.voice") 
+    
+    if reaction.message.channel != roleChannelId:
+        return #So it only happens in the specified channel
+    if str(reaction.emoji) == "🇻":
+        role = discord.utils.get(reaction.message.server.roles, name="Verified")
+        await client.add_roles(user, role)
+	
 @client.event
 async def on_reaction_remove(reaction, user):
     verifychannel = "★verify-for-chatting★"
