@@ -12,7 +12,7 @@ client.remove_command('help')
 async def on_message(message):
     with open("users.json", "r") as f:
         users = json.load(f)
-        if message.author.client:
+        if message.author.bot:
             return
         if message.channel.is_private:
             return
