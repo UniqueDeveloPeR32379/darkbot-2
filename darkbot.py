@@ -4,7 +4,7 @@ import os
 import random
 import json
 import asyncio
-
+import time
 
 client = commands.Bot(description="MultiVerse Official Bot", command_prefix=commands.when_mentioned_or("mv!"), pm_help = True)
 client.remove_command('help')
@@ -47,7 +47,7 @@ async def level_up(users, user, channel, server):
     lvl_end = int(experience ** (1/4))
 
     if lvl_start < lvl_end:
-        await cl.send_message(channel, f":tada: Congrats {user.mention}, you levelled up to level {lvl_end}!")
+        await client.send_message(channel, f":tada: Congrats {user.mention}, you levelled up to level {lvl_end}!")
         users[user.id + "-" + server.id]["level"] = lvl_end
     
 #show when it connects to discord
