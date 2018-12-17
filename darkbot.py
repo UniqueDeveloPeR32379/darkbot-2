@@ -45,9 +45,8 @@ async def level_up(users, user, channel, server):
     experience = users[user.id + "-" + server.id]["experience"]
     lvl_start = users[user.id + "-" + server.id]["level"]
     lvl_end = int(experience ** (1/4))
-
     if lvl_start < lvl_end:
-        await client.send_message(channel, f":tada: Congrats {user.mention}, you levelled up to level {lvl_end}!")
+        await client.send_message(channel, f":tada: Congrats {user.name}, you levelled up to level {lvl_end}!")
         users[user.id + "-" + server.id]["level"] = lvl_end
     
 #show when it connects to discord
