@@ -57,11 +57,7 @@ async def on_ready():
 
 @client.event
 async def on_reaction_add(reaction, user):
-    roleChannelId = discord.utils.get(reaction.message.server.channels, name="★verify-for-chatting★", type="ChannelType.voice") 
-    
-    if reaction.message.channel != roleChannelId:
-        return #So it only happens in the specified channel
-    if str(reaction.emoji) == "🇻":
+    if reaction.emoji == "🇻":
         role = discord.utils.get(reaction.message.server.roles, name="Verified")
         await client.add_roles(user, role)
 	
@@ -89,5 +85,15 @@ async def setreactionverify(ctx):
             reaction = '🇻'
             await client.add_reaction(react_message, reaction)
   
+@client.command(pass_context=True)
+async def remind(ctx, time=None, *,remind=None):
+    time =int(time)
+    time = time * 60
+    output = time/60
+    await client.say("I will remind {} after {} minutes for {}".format(ctx.message.author.name, output, remind))
+    await asyncio.sleep(time)
+    await client.say("Reminder: {} by {}".format(remind, ctx.message.author.mention))
+    await client.send_message(ctx.message.author, "Reminder: {}".format(remind))
+
 
 client.run(os.getenv('Token'))
