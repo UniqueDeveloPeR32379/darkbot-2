@@ -11,21 +11,24 @@ client.remove_command('help')
 
 @client.event
 async def on_message(message):
-    with open("users.json", "r") as f:
-        users = json.load(f)
-        if message.author.bot:
-            return
-        if message.channel.is_private:
-            return
-        else:
-            await update_data(users, message.author, message.server)
-            number = random.randint(5,10)
-            await add_experience(users, message.author, number, message.server)
-            await level_up(users, message.author, message.channel, message.server)
+    if message.server.id == '264445053596991498':
+        return
+    else:
+        with open("users.json", "r") as f:
+            users = json.load(f)
+            if message.author.bot:
+                return
+            if message.channel.is_private:
+                return
+            else:
+                await update_data(users, message.author, message.server)
+                number = random.randint(5,10)
+                await add_experience(users, message.author, number, message.server)
+                await level_up(users, message.author, message.channel, message.server)
 
-        with open("users.json", "w") as f:
-            json.dump(users, f)
-    await client.process_commands(message)
+            with open("users.json", "w") as f:
+                json.dump(users, f)
+        await client.process_commands(message)
 
 async def update_data(users, user, server):
     if not user.id + "-" + server.id in users:
