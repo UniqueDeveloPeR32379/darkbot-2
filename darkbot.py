@@ -18,6 +18,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    user_add_xp(message.author.id, 2)
     if message.content.lower().startswith('mv!rank'):
         r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
         level=int(get_xp(message.author.id)/100)
@@ -28,9 +29,7 @@ async def on_message(message):
         embed.add_field(name = '**__Level__**'.format(message.author),value ='``{}``'.format(level),inline = False)
         embed.add_field(name='Note:',value='Our bot gets resetted every day so rank also gets resetted so it shows daily rank')
         await client.send_message(message.channel, embed=embed)
-     user_add_xp(message.author.id, 2)
-
-
+     
 def user_add_xp(user_id: int, xp: int):
     if os.path.isfile("users.json"):
         try:
