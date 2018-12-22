@@ -16,6 +16,50 @@ async def on_ready():
     print('Logged in as')
     print(client.user.name)
 
+@client.event
+async def on_message(message):
+    if message.content.lower().startswith('mv!  rank'):
+        r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+        level=int(get_xp(message.author.id)/100)
+        embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+        embed.set_author(name='Daily Universal Rank')
+        embed.set_thumbnail(url = message.author.avatar_url)
+        embed.add_field(name = '**__XP__**'.format(message.author),value ='``{}``'.format(get_xp(message.author.id)),inline = False)
+        embed.add_field(name = '**__Level__**'.format(message.author),value ='``{}``'.format(level),inline = False)
+        embed.add_field(name='Note:',value='Our bot gets resetted every day so rank also gets resetted so it shows daily rank')
+        await client.send_message(message.channel, embed=embed)
+        user_add_xp(message.author.id, 2)
+
+
+def user_add_xp(user_id: int, xp: int):
+    if os.path.isfile("users.json"):
+        try:
+            with open('users.json', 'r') as fp:
+                users = json.load(fp)
+            users[user_id]['xp'] += xp
+            with open('users.json', 'w') as fp:
+                json.dump(users, fp, sort_keys=True, indent=4)
+        except KeyError:
+            with open('users.json', 'r') as fp:
+                users = json.load(fp)
+            users[user_id] = {}
+            users[user_id]['xp'] = xp
+            with open('users.json', 'w') as fp:
+                json.dump(users, fp, sort_keys=True, indent=4)
+    else:
+        users = {user_id: {}}
+        users[user_id]['xp'] = xp
+        with open('users.json', 'w') as fp:
+            json.dump(users, fp, sort_keys=True, indent=4)
+
+
+def get_xp(user_id: int):
+    if os.path.isfile('users.json'):
+        with open('users.json', 'r') as fp:
+            users = json.load(fp)
+        return users[user_id]['xp']
+    else:
+        return 0
 	
 @client.event
 async def on_reaction_add(reaction, user):
