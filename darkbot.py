@@ -14,7 +14,7 @@ async def on_message(message):
     if message.server.id == '264445053596991498':
         return
     else:
-        for channel in server.channels:
+        for channel in message.server.channels:
           if channel.name == '★-rank-ups-★':		
               with open("users.json", "r") as f:
                   users = json.load(f)
