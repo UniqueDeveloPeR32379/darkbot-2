@@ -27,7 +27,7 @@ async def on_message(message):
         embed.set_thumbnail(url = message.author.avatar_url)
         embed.add_field(name = '**__XP__**'.format(message.author),value ='``{}``'.format(get_xp(message.author.id)),inline = False)
         embed.add_field(name = '**__Level__**'.format(message.author),value ='``{}``'.format(level),inline = False)
-        embed.add_field(name='Note:',value='Our bot gets resetted every day so rank also gets resetted so it shows daily rank')
+        embed.add_field(name='Note:',value='Our bot reset all ranks everyday so it shows only daily rank')
         await client.send_message(message.channel, embed=embed)
      
 def user_add_xp(user_id: int, xp: int):
