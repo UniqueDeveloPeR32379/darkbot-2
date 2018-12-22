@@ -28,8 +28,7 @@ async def on_message(message):
         embed.add_field(name = '**__Level__**'.format(message.author),value ='``{}``'.format(level),inline = False)
         embed.set_footer(text='Note: Our bot gets resetted every day so rank also gets resetted so it shows daily rank')
         await client.send_message(message.channel, embed=embed)
-
-    user_add_xp(message.author.id, 2)
+        user_add_xp(message.author.id, 2)
 
 
 def user_add_xp(user_id: int, xp: int):
