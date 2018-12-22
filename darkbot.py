@@ -18,7 +18,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.content.lower().startswith('mv!  rank'):
+    if message.content.lower().startswith('mv!rank'):
         r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
         level=int(get_xp(message.author.id)/100)
         embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
