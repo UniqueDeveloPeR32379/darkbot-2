@@ -9,52 +9,6 @@ import time
 client = commands.Bot(description="MultiVerse Official Bot", command_prefix=commands.when_mentioned_or("mv!"), pm_help = True)
 client.remove_command('help')
 
-@client.event
-async def on_message(message):
-    if message.server.id == '264445053596991498':
-        return
-    else:
-        for channel in message.server.channels:
-          if channel.name == '★-rank-ups-★':		
-              with open("users.json", "r") as f:
-                  users = json.load(f)
-                  if message.author.bot:
-                      return
-                  if message.channel.is_private:
-                      return
-                  else:
-                      await update_data(users, message.author, message.server)
-                      number = random.randint(5,10)
-                      await add_experience(users, message.author, number, message.server)
-                      await level_up(users, message.author, channel, message.server)
-
-                  with open("users.json", "w") as f:
-                      json.dump(users, f)
-                  await client.process_commands(message)
-			
-async def update_data(users, user, server):
-    if not user.id + "-" + server.id in users:
-        users[user.id + "-" + server.id] = {}
-        users[user.id + "-" + server.id]["experience"] = 0
-        users[user.id + "-" + server.id]["level"] = 1
-        users[user.id + "-" + server.id]["last_message"] = 0
-
-async def add_experience(users, user, exp, server):
-    if time.time() - users[user.id + "-" + server.id]["last_message"] > 5: 
-        users[user.id + "-" + server.id]["experience"] += exp
-        users[user.id + "-" + server.id]["last_message"] = time.time()
-    else:
-        return
-
-async def level_up(users, user, channel, server):
-    experience = users[user.id + "-" + server.id]["experience"]
-    lvl_start = users[user.id + "-" + server.id]["level"]
-    lvl_end = int(experience ** (1/4))
-    if lvl_start < lvl_end:
-        await client.send_message(channel, f":tada: Congrats {user.mention}, you levelled up to level {lvl_end}!")
-        users[user.id + "-" + server.id]["level"] = lvl_end
-        return
-	
 #show when it connects to discord
 @client.event
 async def on_ready():
