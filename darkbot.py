@@ -88,7 +88,7 @@ async def setreactionverify(ctx):
     for channel in author.server.channels:
         if channel.name == '★verify-for-chatting★':
             react_message = await client.send_message(channel, 'React with <a:happy:516183323052212236> to Verify | This verification system is to prevent our server from those who join and try to spam from self bots')
-            reaction = '<a:happy:516183323052212236>'
+            reaction = 'a:happy:516183323052212236'
             await client.add_reaction(react_message, reaction)
   
 @client.command(pass_context=True)
