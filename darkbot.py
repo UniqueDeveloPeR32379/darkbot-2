@@ -87,8 +87,8 @@ async def setreactionverify(ctx):
     await client.create_channel(server, '★verify-for-chatting★',everyone)
     for channel in author.server.channels:
         if channel.name == '★verify-for-chatting★':
-            react_message = await client.send_message(channel, 'React with 🇻 to Verify | Sometimes it not works so you can also use mv!verify anywhere(Where you can send messages)')
-            reaction = '🇻'
+            react_message = await client.send_message(channel, 'React with <a:happy:516183323052212236> to Verify | This verification system is to prevent our server from those who join and try to spam from self bots')
+            reaction = '<a:happy:516183323052212236>'
             await client.add_reaction(react_message, reaction)
   
 @client.command(pass_context=True)
