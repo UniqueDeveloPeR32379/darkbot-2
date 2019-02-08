@@ -21,17 +21,32 @@ async def on_message(message):
     user_add_xp(message.author.id, 2)
     await client.process_commands(message)
     if message.content.lower().startswith('mv!rank'):
-        r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-        level=int(get_xp(message.author.id)/100)
-        msgs=int(get_xp(message.author.id)/2)
-        embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
-        embed.set_author(name='Daily Universal Rank')
-        embed.set_thumbnail(url = message.author.avatar_url)
-        embed.add_field(name = '**__XP__**'.format(message.author),value ='``{}``'.format(get_xp(message.author.id)),inline = False)
-        embed.add_field(name = '**__Level__**'.format(message.author),value ='``{}``'.format(level),inline = False)
-        embed.add_field(name = '**__Messages__**'.format(message.author),value ='``{}`` Messages'.format(msgs),inline = False)
-        embed.add_field(name='Note:',value='Our bot reset all ranks everyday so it shows only daily rank')
-        await client.send_message(message.channel, embed=embed)
+        if message.content.lower().endswith('mv!rank'):
+            r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+            level=int(get_xp(message.author.id)/100)
+            msgs=int(get_xp(message.author.id)/2)
+            embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+            embed.set_author(name='Daily Universal Rank')
+            embed.set_thumbnail(url = message.author.avatar_url)
+            embed.add_field(name = '**__XP__**'.format(message.author),value ='``{}``'.format(get_xp(message.author.id)),inline = False)
+            embed.add_field(name = '**__Level__**'.format(message.author),value ='``{}``'.format(level),inline = False)
+            embed.add_field(name = '**__Messages__**'.format(message.author),value ='``{}`` Messages'.format(msgs),inline = False)
+            embed.add_field(name='Note:',value='Our bot reset all ranks everyday so it shows only daily rank')
+            await client.send_message(message.channel, embed=embed)
+        else:
+            member = message.mentions[0]
+            r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+            level=int(get_xp(member.id)/100)
+            msgs=int(get_xp(member.id)/2)
+            embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+            embed.set_author(name='Daily Universal Rank')
+            embed.set_thumbnail(url = member.author.avatar_url)
+            embed.add_field(name = '**__XP__**'.format(member),value ='``{}``'.format(get_xp(member.id)),inline = False)
+            embed.add_field(name = '**__Level__**'.format(member),value ='``{}``'.format(level),inline = False)
+            embed.add_field(name = '**__Messages__**'.format(member),value ='``{}`` Messages'.format(msgs),inline = False)
+            embed.add_field(name='Note:',value='Our bot reset all ranks everyday so it shows only daily rank')
+            await client.send_message(message.channel, embed=embed)
+
      
 def user_add_xp(user_id: int, xp: int):
     if os.path.isfile("users.json"):
