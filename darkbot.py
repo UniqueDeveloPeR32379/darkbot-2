@@ -40,7 +40,7 @@ async def on_message(message):
             msgs=int(get_xp(member.id)/2)
             embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
             embed.set_author(name='Daily Universal Rank')
-            embed.set_thumbnail(url = member.author.avatar_url)
+            embed.set_thumbnail(url = member.avatar_url)
             embed.add_field(name = '**__XP__**'.format(member),value ='``{}``'.format(get_xp(member.id)),inline = False)
             embed.add_field(name = '**__Level__**'.format(member),value ='``{}``'.format(level),inline = False)
             embed.add_field(name = '**__Messages__**'.format(member),value ='``{}`` Messages'.format(msgs),inline = False)
